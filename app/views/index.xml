@@ -1,0 +1,20 @@
+<Alloy>
+	<Window class="container">
+		<Label id="label" onClick="doClick">I'm richer than you, mofucker.</Label>
+	</Window>
+
+
+
+	<Window id="favoriteWindow" class="tapWindow" >
+		<View id="navBarView" >
+			<Require id="listAccountsButton" src="listAccountsButton" class="leftNavButton" />
+			<View id="titleView">
+				<ImageView id="titleImageView" />
+				<Label id="titleLabel" />
+			</View>
+			<Require id="newTweetButton" src="newTweetButton" class="rightNavButton" />
+		</View>
+		<!-- <Require id="tweetsView" src="favorit/tweetsView" /> -->
+		<Require id="peopleView" src="favorite/peopleView" />
+	</Window>
+</Alloy>
