@@ -1,5 +1,7 @@
-function doClick(e) {
-    alert($.label.text);
-}
 
-$.index.open();
+
+
+
+
+var rankWindow = Alloy.createController('rankWindow');
+rankWindow.getView().open();
