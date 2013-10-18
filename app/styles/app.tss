@@ -98,10 +98,10 @@
         type: 'linear',
         startPoint: { x: 0, y: '0%' },
         endPoint: { x: 0, y: '100%' },
-        colors: [ { color: '#777', offset: 0.0 }, 
-        		{ color: '#333', offset: 0.05 },
-        		{ color: '#111', offset: 0.95 }, 
-        		{ color: '#000', offset: 1.0 } ]
+        colors: [ { color: '#232323', offset: 0.0 }, 
+        		{ color: '#414141', offset: 0.05 },
+        		{ color: '#555755', offset: 0.12 }, 
+        		{ color: '#666966', offset: 1.0 } ]
     },
     zIndex: 10
 },
@@ -125,8 +125,9 @@
 	visible: false
 },
 "#titleLabel": {
-	top: 11,
-	right: 25,
+	top: 17,
+	// right: 35,
+	right: "11%",
 	color: '#FFF',
 	shadowColor: "#111", // IOS only
 	font: {

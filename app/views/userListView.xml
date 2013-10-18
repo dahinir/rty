@@ -31,14 +31,21 @@
 					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
 					<Label id="name" bindId="name" />
 					<Label id="screenName" bindId="screenName" />
-					<Label id="description_" bindId="description_" /> <!-- 'description' is keyword -->
+					<Label id="donations" bindId="donations" />
+					<Label id="message" bindId="message" />
+					<Label id="description" bindId="description_" /> <!-- 'description' is keyword -->
 				</ItemTemplate>
 			</Templates>
 			
 			<ListSection id="section" dataCollection="user" dataTransform="doTransform">
 			<!-- <ListSection id="section" dataCollection="user" instance="true" dataTransform="doTransform"> -->
 				<!-- <Collection id="users" src="user" instance="true" /> -->
-				<ListItem template="{template}" name:text="{name}" screenName:text="{link}" profileImage:image="{picture_url}"/>
+				<ListItem properties:itemId="{fb_id}" template="{template}" 
+					name:text="{name}" screenName:text="{link}" 
+					profileImage:image="{picture_url}"
+					donations:text="{donations}" message:text="{message}"
+					description_:text="{description}" 
+					/>
 			</ListSection>
 		</ListView>
 	</View>

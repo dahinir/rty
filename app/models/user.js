@@ -145,8 +145,10 @@ exports.definition = {
 						for(var i = 0; i < e.users.length; i++){
 							e.users[i].acs_id = e.users[i].id;
 							e.users[i].fb_id = e.users[i].external_accounts[0].external_id;
+							e.users[i].donations = e.users[i].custom_fields.donations;
+							e.users[i].message = e.users[i].custom_fields.message;
 							fb_ids.push( e.users[i].fb_id );
-							
+					// alert(e.users[i].custom_fields.donations + e.users[i].custom_fields.message);
 							var user = thisCollection.get( e.users[i].acs_id );
 							if( user ){
 								user.set( e.users[i] );
