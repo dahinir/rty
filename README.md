@@ -16,3 +16,9 @@ Titanium is Copyright (c) 2008-2013 by Appcelerator, Inc. All Rights Reserved.
 Titanium is licensed under the Apache Public License (Version 2). Please
 see the LICENSE file for the full license.
 
+
+
+
+## todo (after dist)
+* You have enabled a Native iOS App integration for your app, but have not specified an iPhone App Store ID or iPad App Store ID
+	:https://developers.facebook.com/apps/510616059030547/summary?save=1

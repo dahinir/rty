@@ -1,0 +1,16 @@
+android/ATTR_PROJECT_NAME=rty
+android/abi=armeabi-v7a
+android/distribute_path=/Users/dahini/Downloads/RTY
+android/keystore_alias=rty
+android/keystore_password=bil1i0ns
+android/keystore_path=/Users/dahini/Dropbox/DeveloperAccounts/android-rty/rty
+android/recent_output=/Users/dahini/Downloads/RTY
+android/sdk_version=Google APIs (Android 4.3)
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=rty
+iosLaunchConfigurationAttributes/appid=com.dasolute.rty
+iosLaunchConfigurationAttributes/certificate=Daehyeon Shin (B83FVSE449)
+iosLaunchConfigurationAttributes/keychain=
+iosLaunchConfigurationAttributes/sdk_version=7.0
+iosLaunchConfigurationAttributes/uuid=6053C338-424B-4D10-9F3B-7FEE19A73EFF

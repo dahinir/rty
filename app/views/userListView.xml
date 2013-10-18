@@ -1,0 +1,45 @@
+<Alloy>
+	<View id="userListView" >
+		<ListView id="listView" defaultItemTemplate="plain" >
+
+			<Templates>
+				<ItemTemplate name="self" >
+					<View id="relationshipIndicator" bindId="relationshipIndicator" />
+					<ImageView id="profileImage" bindId="profileImage" />
+					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
+					<Label id="name" bindId="name" />
+					<Label id="screenName" bindId="screenName" />
+					<Label id="following" bindId="following" />
+					<Label id="followers" bindId="followers" />
+					<Label id="description_" bindId="description_" /> <!-- 'description' is keyword -->
+					<!-- <Button id="rightActionButton" bindId="rightActionButton" onClick="onRightButtonClick" /> -->
+				</ItemTemplate>
+				<ItemTemplate name="twitter" >
+					<View id="relationshipIndicator" bindId="relationshipIndicator" />
+					<ImageView id="profileImage" bindId="profileImage" />
+					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
+					<Label id="name" bindId="name" />
+					<Label id="screenName" bindId="screenName" />
+					<Label id="following" bindId="following" />
+					<Label id="followers" bindId="followers" />
+					<Label id="description_" bindId="description_" /> <!-- 'description' is keyword -->
+					<!-- <Button id="rightActionButton" bindId="rightActionButton" onClick="onRightButtonClick" /> -->
+				</ItemTemplate>
+				<ItemTemplate name="facebook" >
+					<View id="relationshipIndicator" bindId="relationshipIndicator" />
+					<ImageView id="profileImage" bindId="profileImage" />
+					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
+					<Label id="name" bindId="name" />
+					<Label id="screenName" bindId="screenName" />
+					<Label id="description_" bindId="description_" /> <!-- 'description' is keyword -->
+				</ItemTemplate>
+			</Templates>
+			
+			<ListSection id="section" dataCollection="user" dataTransform="doTransform">
+			<!-- <ListSection id="section" dataCollection="user" instance="true" dataTransform="doTransform"> -->
+				<!-- <Collection id="users" src="user" instance="true" /> -->
+				<ListItem template="{template}" name:text="{name}" screenName:text="{link}" profileImage:image="{picture_url}"/>
+			</ListSection>
+		</ListView>
+	</View>
+</Alloy>

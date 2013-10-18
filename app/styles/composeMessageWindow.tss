@@ -1,0 +1,31 @@
+"#composeMessageWindow": {
+	// layout: "vertical",
+	modal: true
+	// height: 200,
+	// width: 200
+	// fullscreen: false
+	// bubbleParent : true,
+	// translucent : true,
+	// backgroundColor: "transparent"
+},
+"#donationTextField": {
+	top: 80,
+	left: 15,
+	width: 120,
+	backgroundColor: "#FFF",
+	textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT	
+},
+"#messageTextArea": {
+	font: {fontSize: 16},
+	top: 150,
+	left: 15,
+	height: Ti.UI.SIZE,
+	width: "80%"
+},
+
+"#picker": {
+	top: 200
+},
+"#pickerColumn": {
+	height: 50
+}

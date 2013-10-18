@@ -1,2 +1,14 @@
 <Alloy>
+	<Window id="mainWindow" >
+		<View id="navBarView" >
+			<Button id="accountButton" class="leftNavButton" >acnt</Button>
+			<View id="titleView">
+				<ImageView id="titleImageView" />
+				<Label id="titleLabel" />
+			</View>
+			<Button id="donateButton" class="rightNavButton">donation</Button>
+			<!-- <Require id="newTweetButton" src="newTweetButton" class="rightNavButton" /> -->
+		</View>
+		<Require id="userListView" src="userListView" />
+	</Window>
 </Alloy>

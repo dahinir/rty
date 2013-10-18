@@ -18,9 +18,6 @@
 ".appWindow": {
 	layout: "vertical"
 },
-".tapWindow":{
-	layout: "vertical"
-},
 "Button": {
 	// backgroundImage:'images/button_bg.png',
 	// height:expr(10+20),
@@ -58,16 +55,22 @@
 	// backgroundImage:'images/tweet_bg.png',
 	// selectedBackgroundColor: darkBlue, //I know, this is dumb, but it's currently inconsistent x-platform
 	// backgroundSelectedColor: darkBlue,
-	height:110
+	height: 110
 	//height:'auto',	// added by dahinir
 	// className:'tvRow'
 },
 "TextField": {
-	height:55,
-	borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	// borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	height: 35,
+	borderRadius: 5,
 	color:'#000000'
 },
+"TextField[platform=ios]":{
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ALWAYS
+},
 "TextArea": {
+	borderRadius: 5,
+	color:'#000000'
 },
 "ActivityIndicator": {
 	color: 'green',

@@ -1,0 +1,30 @@
+<Alloy>
+	<Window id="composeMessageWindow" >
+		<View id="navBarView" >
+			<Button id="closeButton" class="leftNavButton" >close</Button>
+			<View id="titleView">
+				<ImageView id="titleImageView" />
+				<Label id="titleLabel" />
+			</View>
+			<Button id="sendButton" class="rightNavButton" >send</Button>
+		</View>
+
+
+
+        <Picker id="picker" selectionIndicator="true" useSpinner="true">
+            <PickerColumn id="pickerColumn" />
+        </Picker>
+
+		
+		<TextField id="donationTextField"
+					keyboardType="Ti.UI.KEYBOARD_DECIMAL_PAD" 
+					suppressReturn="false" 
+					maxLength="1024" />
+		<TextArea id="messageTextArea"  textAlign="left" 
+					keyboardType="Ti.UI.KEYBOARD_DEFAULT" 
+					returnKeyType="Ti.UI.RETURNKEY_DEFAULT" 
+					suppressReturn="false" 
+					maxLength="1024" />
+
+	</Window>
+</Alloy>
