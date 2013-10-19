@@ -30,10 +30,11 @@
 	
 	// color: '#000',	// text
 	// selectedColor: '#FFF',	// text
-	style: Ti.UI.iPhone.SystemButton.FIXED_SPACE,
 	// borderColor: '#000',
 	// borderWidth: 0.5,
 	// borderRadius: 10,
+	// style: Ti.UI.iPhone.SystemButton.FIXED_SPACE,
+	color: '#fff',
 	height: 30
 },
 "Label": {

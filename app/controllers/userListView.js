@@ -49,7 +49,13 @@ $.listView.addEventListener('itemclick', function(e){
 // users.fetch();
 users.fetchFromServer();
 
-
+var button = Ti.UI.createButton({
+   title: 'refresh',
+   top: 300,
+   width: 100,
+   height: 50
+});
+$.listView.add(button);
 
 // $.win.addEventListener("close", function(){
     // $.destroy();
