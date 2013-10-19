@@ -1,9 +1,9 @@
 var args = arguments[0] || {};
 // var Facebook = Alloy.Globals.Facebook;
 
-$.backgroundView.addEventListener('click', function(e) {
-	$.accountsWindow.close();
-});
+// $.backgroundView.addEventListener('click', function(e) {
+	// // $.accountsWindow.close();
+// });
 
 $.facebookLoginButton.style = Facebook.BUTTON_STYLE_WIDE;
 

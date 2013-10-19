@@ -19,6 +19,8 @@ exports.definition = {
 			"acs_id": "TEXT",
 			"first_name": "TEXT",
 			"last_name": "TEXT",
+			"donations": "INTEGER",
+			"message":"TEXT",
 			
 			// for this app
 			// "cached_at":
@@ -161,6 +163,7 @@ exports.definition = {
 						}
 						
 						// Alloy.Globals.Facebook.requestWithGraphPath('', {
+						// alert(fb_ids);
 						Facebook.requestWithGraphPath('', {
 							ids: fb_ids,
 							// format: 'json',
