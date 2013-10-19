@@ -17,8 +17,6 @@ var setSoftKeyboardHeight = function(e){
 Ti.App.addEventListener('keyboardFrameChanged', setSoftKeyboardHeight);
 
 
-
-
 var multipleQuantity;
 $.picker.addEventListener('change', function(e){
 	// alert(e.rowIndex);
@@ -65,7 +63,9 @@ var postMessage = function(e){
 	});
 };
 
-Storekit.addEventListener('transactionState', postMessage);
+if( OS_IOS ){
+	Storekit.addEventListener('transactionState', postMessage);
+}
 
 $.closeButton.addEventListener('click', function(e){
 	$.composeMessageWindow.close();
@@ -76,14 +76,16 @@ $.sendButton.addEventListener('click', function(e){
 	// postMessage(e);
 	// return;
 
-	Storekit.requestProducts(['com.dasolute.rty.leave'], function(e){
-		Ti.API.info(e);
-		// alert(e);
-		if( e.success ){
-			Ti.API.info("request products success: "+ e.products[0]);
-			Storekit.purchase( e.products[0] , multipleQuantity);
-		}
-	});
+	if(OS_IOS){
+		Storekit.requestProducts(['com.dasolute.rty.leave'], function(e){
+			Ti.API.info(e);
+			// alert(e);
+			if( e.success ){
+				Ti.API.info("request products success: "+ e.products[0]);
+				Storekit.purchase( e.products[0] , multipleQuantity);
+			}
+		});
+	}
 });
 
 $.messageTextArea.addEventListener('focus', function(e){
@@ -101,7 +103,9 @@ $.messageTextArea.addEventListener('doubletap', function(e){
 
 $.composeMessageWindow.addEventListener('close', function(){
 	Ti.App.removeEventListener('keyboardFrameChanged', setSoftKeyboardHeight);
-	Storekit.removeEventListener('transactionState', postMessage);
+	if( OS_IOS ){
+		Storekit.removeEventListener('transactionState', postMessage);
+	}
 	$.destroy();
 });
 

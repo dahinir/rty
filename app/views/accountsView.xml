@@ -1,9 +1,9 @@
 <Alloy>
-	<Window id="accountsWindow">
-		<View id="backgroundView" />
+	<!-- <Window id="accountsWindow"> -->
+		<!-- <View id="backgroundView" /> -->
 		<View id="accountsView" >
 			<!-- <LoginButton id="facebookLoginButton" ns="Alloy.Globals.Facebook"/> -->
 			<LoginButton id="facebookLoginButton" ns="Facebook"/>
 		</View>
-	</Window>
+	<!-- </Window> -->
 </Alloy>

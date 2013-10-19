@@ -127,7 +127,7 @@
 "#titleLabel": {
 	top: 17,
 	// right: 35,
-	right: "11%",
+	right: "12%",
 	color: '#FFF',
 	shadowColor: "#111", // IOS only
 	font: {

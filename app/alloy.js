@@ -13,74 +13,75 @@
 // global variables
 var Facebook = require('facebook');
 var Cloud = require('ti.cloud');
-var Storekit = require('ti.storekit');
-
-Storekit.receiptVerificationSandbox = (Ti.App.deployType !== 'production');
-Storekit.receiptVerificationSharedSecret = "c7833388c0ab4140a4a0104e85a9da6f";
-// alert(Storekit.receiptVerificationSharedSecret);
-// imrtysuckers2@gmail.com / 1mrtySuckers
 Cloud.sessionId = Ti.App.Properties.getString('acsSessionId');
 
-Storekit.addEventListener('transactionState', function (evt) {
-	alert("transactionState event: "+ evt.state+ "\n "
-	 + evt.quantity + "\n " + evt.productIdentifier);
-
-	switch (evt.state) {
-		case Storekit.FAILED:
-			alert("Storekit.FAILED " + evt.message);
-			if (evt.cancelled) {
-				alert('Purchase cancelled');
-			} else {
-				alert('ERROR: Buying failed! ' + evt.message);
-			}
-			break;
-		case Storekit.PURCHASED:
-			alert("Storekit.PURCHASED!");
-			alert("date:" + evt.date + "\n"
-			+ "identifier:" + evt.identifier + "\n"
-			+ "receipt:" + JSON.stringify(evt.receipt));
-			
-			if (verifyingReceipts) {
-				Storekit.verifyReceipt(evt, function (e) {
-					if (e.success) {
-						if (e.valid) {
-							alert('Thanks! Receipt Verified');
-							markProductAsPurchased(evt.productIdentifier);
+if( OS_IOS ){
+	var Storekit = require('ti.storekit');
+	Storekit.receiptVerificationSandbox = (Ti.App.deployType !== 'production');
+	Storekit.receiptVerificationSharedSecret = "c7833388c0ab4140a4a0104e85a9da6f";
+	// alert(Storekit.receiptVerificationSharedSecret);
+	// imrtysuckers2@gmail.com / 1mrtySuckers
+	
+	Storekit.addEventListener('transactionState', function (evt) {
+		alert("transactionState event: "+ evt.state+ "\n "
+		 + evt.quantity + "\n " + evt.productIdentifier);
+	
+		switch (evt.state) {
+			case Storekit.FAILED:
+				alert("Storekit.FAILED " + evt.message);
+				if (evt.cancelled) {
+					alert('Purchase cancelled');
+				} else {
+					alert('ERROR: Buying failed! ' + evt.message);
+				}
+				break;
+			case Storekit.PURCHASED:
+				alert("Storekit.PURCHASED!");
+				alert("date:" + evt.date + "\n"
+				+ "identifier:" + evt.identifier + "\n"
+				+ "receipt:" + JSON.stringify(evt.receipt));
+				
+				if (verifyingReceipts) {
+					Storekit.verifyReceipt(evt, function (e) {
+						if (e.success) {
+							if (e.valid) {
+								alert('Thanks! Receipt Verified');
+								markProductAsPurchased(evt.productIdentifier);
+							} else {
+								alert('Sorry. Receipt is invalid');
+							}
 						} else {
-							alert('Sorry. Receipt is invalid');
+							alert(e.message);
 						}
-					} else {
-						alert(e.message);
-					}
-				});
-			} else {
-				alert('Thanks!');
-				markProductAsPurchased(evt.productIdentifier);
-			}
-
-			break;
-		case Storekit.PURCHASING:
-			alert("Storekit.PURCHASING");
-			Ti.API.info("Purchasing " + evt.productIdentifier);
-			break;
-		case Storekit.RESTORED:
-			alert("Storekit.RESTORED");
-			// The complete list of restored products is sent with the `restoredCompletedTransactions` event
-			Ti.API.info("Restored " + evt.productIdentifier);
-		    break;
-	}
-});
-
-/*
-Storekit.requestProducts(['com.dasolute.rty.leave'], function(e){
-	Ti.API.info(e);
-	// alert(e);
-	if( e.success ){
-		alert("request products success");
-		// Storekit.purchase( e.products[0] );
-	}
-});
-*/
+					});
+				} else {
+					alert('Thanks!');
+					markProductAsPurchased(evt.productIdentifier);
+				}
+	
+				break;
+			case Storekit.PURCHASING:
+				alert("Storekit.PURCHASING");
+				Ti.API.info("Purchasing " + evt.productIdentifier);
+				break;
+			case Storekit.RESTORED:
+				alert("Storekit.RESTORED");
+				// The complete list of restored products is sent with the `restoredCompletedTransactions` event
+				Ti.API.info("Restored " + evt.productIdentifier);
+			    break;
+		}
+	});
+	/*
+	Storekit.requestProducts(['com.dasolute.rty.leave'], function(e){
+		Ti.API.info(e);
+		// alert(e);
+		if( e.success ){
+			alert("request products success");
+			// Storekit.purchase( e.products[0] );
+		}
+	});
+	*/
+}
 
 
 Facebook.appid = Ti.App.Properties.getString("ti.facebook.appid");
