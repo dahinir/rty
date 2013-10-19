@@ -103,7 +103,7 @@
         		{ color: '#555755', offset: 0.12 }, 
         		{ color: '#666966', offset: 1.0 } ]
     },
-    zIndex: 10
+    zIndex: 1
 },
 "#titleView":{
 	width: Ti.UI.SIZE,

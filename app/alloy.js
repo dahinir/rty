@@ -13,19 +13,20 @@
 // global variables
 var Facebook = require('facebook');
 var Cloud = require('ti.cloud');
+
 Cloud.sessionId = Ti.App.Properties.getString('acsSessionId');
 
-if( OS_IOS ){
+
+if (OS_IOS) {
 	var Storekit = require('ti.storekit');
 	Storekit.receiptVerificationSandbox = (Ti.App.deployType !== 'production');
 	Storekit.receiptVerificationSharedSecret = "c7833388c0ab4140a4a0104e85a9da6f";
 	// alert(Storekit.receiptVerificationSharedSecret);
 	// imrtysuckers2@gmail.com / 1mrtySuckers
-	
-	Storekit.addEventListener('transactionState', function (evt) {
-		alert("transactionState event: "+ evt.state+ "\n "
-		 + evt.quantity + "\n " + evt.productIdentifier);
-	
+
+	Storekit.addEventListener('transactionState', function(evt) {
+		alert("transactionState event: " + evt.state + "\n " + evt.quantity + "\n " + evt.productIdentifier);
+
 		switch (evt.state) {
 			case Storekit.FAILED:
 				alert("Storekit.FAILED " + evt.message);
@@ -37,12 +38,10 @@ if( OS_IOS ){
 				break;
 			case Storekit.PURCHASED:
 				alert("Storekit.PURCHASED!");
-				alert("date:" + evt.date + "\n"
-				+ "identifier:" + evt.identifier + "\n"
-				+ "receipt:" + JSON.stringify(evt.receipt));
-				
+				alert("date:" + evt.date + "\n" + "identifier:" + evt.identifier + "\n" + "receipt:" + JSON.stringify(evt.receipt));
+
 				if (verifyingReceipts) {
-					Storekit.verifyReceipt(evt, function (e) {
+					Storekit.verifyReceipt(evt, function(e) {
 						if (e.success) {
 							if (e.valid) {
 								alert('Thanks! Receipt Verified');
@@ -58,7 +57,7 @@ if( OS_IOS ){
 					alert('Thanks!');
 					markProductAsPurchased(evt.productIdentifier);
 				}
-	
+
 				break;
 			case Storekit.PURCHASING:
 				alert("Storekit.PURCHASING");
@@ -68,19 +67,9 @@ if( OS_IOS ){
 				alert("Storekit.RESTORED");
 				// The complete list of restored products is sent with the `restoredCompletedTransactions` event
 				Ti.API.info("Restored " + evt.productIdentifier);
-			    break;
+				break;
 		}
 	});
-	/*
-	Storekit.requestProducts(['com.dasolute.rty.leave'], function(e){
-		Ti.API.info(e);
-		// alert(e);
-		if( e.success ){
-			alert("request products success");
-			// Storekit.purchase( e.products[0] );
-		}
-	});
-	*/
 }
 
 
@@ -127,26 +116,6 @@ Facebook.addEventListener('login', function(e){
 					    }
 					});
     			}
-		        // Ti.API.info('Success:\n' +'id: ' + user.id + '\n' +'first name: ' + user.first_name + '\n' +'last name: ' + user.last_name);
-				
-				// Facebook.requestWithGraphPath('', {
-					// ids: ['1463107549','7901103'],
-					// fields: ['id', 'name', 'email', 'picture', 'link']
-				// }, 'GET', function(e) {
-					// if (e.success) {
-						// // 사용자 정보를 acs로 업로드 
-						// // dahini 1463107549
-						// // mike 9074
-						// // arjune 7901103
-						// Ti.API.info(e.result);
-						// Ti.API.info("length:" + e.result.length);
-					// } else if (e.error) {
-						// alert(e.error);
-					// } else {
-						// alert('Unknown response');
-					// }
-				// }); 
-
 		    } else {
 		        alert('Error:\n' + ((e.error && e.message) || JSON.stringify(e)));
 		    }
@@ -156,7 +125,7 @@ Facebook.addEventListener('login', function(e){
 	}
 });
 Facebook.addEventListener('logout', function(e) {
-	// Ti.App.Properties.removeProperty("fb_id");
+	Ti.App.Properties.removeProperty("acsSessionId");
     alert('Logged out');
 });
 

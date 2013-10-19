@@ -2,6 +2,12 @@ var args = arguments[0] || {};
 var users = Alloy.Collections.user;
 // var users = Alloy.Collections.user;
 
+/* sort this users by order of donations */
+users.comparator = function(user){
+	alert( user.get('donations'));
+	return -user.get('donations');
+};
+
 
 var doTransform = function (model) {
 	var o = model.toJSON();
