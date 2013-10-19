@@ -4,7 +4,6 @@ var users = Alloy.Collections.user;
 
 /* sort this users by order of donations */
 users.comparator = function(user){
-	alert( user.get('donations'));
 	return -user.get('donations');
 };
 
