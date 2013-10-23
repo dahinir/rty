@@ -11,6 +11,7 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 // global variables
+// var _ = require('alloy/underscore')._;
 var Facebook = require('facebook');
 var Cloud = require('ti.cloud');
 

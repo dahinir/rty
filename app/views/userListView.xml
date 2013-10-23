@@ -37,9 +37,8 @@
 				</ItemTemplate>
 			</Templates>
 			
+			<!--
 			<ListSection id="section" dataCollection="user" dataTransform="doTransform">
-			<!-- <ListSection id="section" dataCollection="user" instance="true" dataTransform="doTransform"> -->
-				<!-- <Collection id="users" src="user" instance="true" /> -->
 				<ListItem properties:itemId="{fb_id}" template="{template}" 
 					name:text="{name}" screenName:text="{link}" 
 					profileImage:image="{picture_url}"
@@ -47,6 +46,9 @@
 					description_:text="{description}" 
 					/>
 			</ListSection>
+			-->
+			<ListSection id="section" />
+
 		</ListView>
 	</View>
 </Alloy>

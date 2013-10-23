@@ -126,14 +126,36 @@ exports.definition = {
 			 * @param {Function} [options.error] Callback function executed after a failed fetch.
 			 */
 			'fetchFromServer': function(options){
-				
+				var success = options.success;
 				var thisCollection = this;
 				// var Cloud = Alloy.Globals.Cloud;
 
+// thisCollection.add({
+    // "acs_id": "52624d7cd72ec85152001bd7",
+    // "donations": 0,
+    // "fb_id": "100005482740868",
+    // "first_name": "rapodor",
+    // "last_name": "don",
+    // "message": "fuck"
+// });
+// thisCollection.add({
+    // "acs_id": "522db010a508bb0b14010a52",
+    // "donations": 5.94,
+    // "fb_id": "1463107549",
+    // "first_name": "shin",
+    // "last_name": "da",
+    // "message": "Hello "
+// });
+// return;
+
 				Cloud.Users.query({
 					page : 1,
-					per_page : 10,
+					per_page : 100,
+				    // 'limit': 999, // 1000 is maxium
+				    // 'order': 'custom_fields.donations',
+				    order: '-donations',
 					where : {
+						// "external_accounts.external_id" : query.id,
 						// age : {
 							// '$gt' : 28
 						// },
@@ -142,31 +164,40 @@ exports.definition = {
 					}
 				}, function(e) {
 					if (e.success) {
-						// alert('Success:\n' + 'Count: ' + e.users.length);
 						var fb_ids = [];
-						for(var i = 0; i < e.users.length; i++){
-							e.users[i].acs_id = e.users[i].id;
-							e.users[i].fb_id = e.users[i].external_accounts[0].external_id;
-							e.users[i].donations = e.users[i].custom_fields.donations;
-							e.users[i].message = e.users[i].custom_fields.message;
-							fb_ids.push( e.users[i].fb_id );
-					// alert(e.users[i].custom_fields.donations + e.users[i].custom_fields.message);
-							var user = thisCollection.get( e.users[i].acs_id );
-							if( user ){
-								user.set( e.users[i] );
+						/** there is no {merge:true} options in backbone 0.9.2 **/
+						var tempUser;
+						_.each(e.users, function(userJSON){
+							var tempUser = thisCollection.where({'acs_id': userJSON.id}).pop();
+							if( tempUser ){
+								tempUser.set({
+									// 'fb_id' : userJSON.external_accounts[0].external_id,
+									// 'first_name' : userJSON.first_name,
+									// 'last_name' : userJSON.last_name,
+									'donations' : userJSON.custom_fields.donations,
+									'message' : userJSON.custom_fields.message
+								}); 
 							}else{
-								thisCollection.add( e.users[i] );
+								thisCollection.add({
+									'acs_id': userJSON.id,
+									'fb_id' : userJSON.external_accounts[0].external_id,
+									'first_name' : userJSON.first_name,
+									'last_name' : userJSON.last_name,
+									'donations' : userJSON.custom_fields.donations,
+									'message' : userJSON.custom_fields.message
+								});
 							}
-							// if( Alloy.Globals.users.length > 1024 ){
-								// Alloy.Globals.users.reset();
-							// }
-						}
+							
+							fb_ids.push( userJSON.external_accounts[0].external_id );
+						});
+						thisCollection.sort();
+						/** there is no sort event in backbone 0.9.2 **/
+						thisCollection.trigger('sort');
 						
-						// Alloy.Globals.Facebook.requestWithGraphPath('', {
-						// alert(fb_ids);
+						// fb_ids = ["1463107549", "100006520249939", "100005482740868"];
 						Facebook.requestWithGraphPath('', {
 							ids: fb_ids,
-							// format: 'json',
+							format: 'json',
 							// width: 200,
 							// height: 200,
 							// fields: ['first_name', 'last_name', 'email', 'picture', 'link']
@@ -174,10 +205,13 @@ exports.definition = {
 						}, 'GET', function(e) {
 							if (e.success) {
 								var result = JSON.parse(e.result);
-								// alert(fb_ids.length);
-								var fb_id;
-								for(var i = 0; fb_ids.length; i++){
-									fb_id = fb_ids.pop();
+								_.each(fb_ids, function(fb_id){
+									if( !result[fb_id] ){
+										// non public fb user
+										Ti.API.info(" fb_id: "+ fb_id);
+										return;
+									}
+									Ti.API.info("result fb_id: 	" + fb_id);
 									thisCollection.where({'fb_id': fb_id}).pop().set({
 										'first_name': result[fb_id].first_name,
 										'last_name': result[fb_id].last_name,
@@ -186,20 +220,17 @@ exports.definition = {
 										// 'picture_url': result[fb_id].picture.data.url
 										// 'picture_url': "https://graph.facebook.com/"+fb_id+"/picture?width=96&height=96"
 									});
-								}
-								// Ti.API.info(result[fb_id].picture.data.url);
-								// alert(fb_ids.length);
+								});
 							} else if (e.error) {
-								alert(e.error);
+								Ti.API.warn(e.error);
 							} else {
-								alert('Unknown response');
+								Ti.API.warn('Unknown response');
 							}
 						}); 
 		
-						// if( success ){
-							// success(thisCollection, e.users, options);
-						// }
-						
+						if( success ){
+							success(thisCollection, e.users, options);
+						}
 					} else {
 						alert('acs Error:\n' + ((e.error && e.message) || JSON.stringify(e)));
 						Ti.API.info( ((e.error && e.message) || JSON.stringify(e)));
