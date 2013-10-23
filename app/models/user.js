@@ -208,7 +208,6 @@ exports.definition = {
 								_.each(fb_ids, function(fb_id){
 									if( !result[fb_id] ){
 										// non public fb user
-										Ti.API.info(" fb_id: "+ fb_id);
 										return;
 									}
 									Ti.API.info("result fb_id: 	" + fb_id);

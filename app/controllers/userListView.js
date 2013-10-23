@@ -58,6 +58,9 @@ var _settingData = function(users){
 			message: {
 				text: user.get('message')
 			},
+			ranking: {
+				text: user.get('ranking')
+			},
 			
 			properties: {
 				itemId: user.get('fb_id')
@@ -117,20 +120,17 @@ users.on('add', function(model, collection, options){
 		'reset': false 
 	});
 });
+*/
+users.on('sort', function(collection, options){ // when the collection has been re-sorted.
+	for(var i = 0; i < users.length; i++){
+		users.at(0).set({'ranking': i+1});
+	}
+});
 users.on('change', function(changedUser){
 	var index = _getIndexByItemId(changedUser.get('fb_id'));
 	var data = _settingData( changedUser );
 	section.updateItemAt(index, data, {'animated': true});
 });
-users.on('sort', function(collection, options){ // when the collection has been re-sorted.
-	alert('sort');
-	// var dataArray = [];
-	// _.each(collection, function(user){
-		// dataArray.push( _settingData( user ) );
-	// });
-	// section.setItems(dataArray);
-});
-*/
 
 $.listView.addEventListener('itemclick', function(e){
     // var item = e.section.getItemAt(e.itemIndex);

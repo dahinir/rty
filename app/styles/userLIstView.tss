@@ -43,6 +43,10 @@
 	top : 5,
 	left : 5
 },
+"#ranking":{
+	top: 6,
+	left: 0
+},
 "#name": {
 	color : '#070707',
 	font : {
