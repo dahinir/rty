@@ -4,6 +4,8 @@ var users = Alloy.createCollection('user');
 var section = $.section;
 var listView = $.listView;
 
+var TOP_LEVEL_COUNT = 2;
+
 /* sort this users by order of donations */ 
 users.comparator = function(user){
 	return -user.get('donations');
@@ -41,46 +43,62 @@ var _getIndexByItemId = function(itemId){
 	}
 	return index;
 };
-var _settingData = function(user){
-	var data = {
-		profileImage: {
-			image: "https://graph.facebook.com/"+ user.get('fb_id') +"/picture?width=96&height=96"
-		},
-		name: {
-			text: user.get('first_name') + ' ' + user.get('last_name')
-		},
-		donations: {
-			text: user.get('donations')
-		},
-		message: {
-			text: user.get('message')
-		},
-		
-		properties: {
-			itemId: user.get('fb_id')
-		},
-		template: 'facebook'
+var _settingData = function(users){
+	var _setData = function(user){
+		var data = {
+			profileImage: {
+				image: "https://graph.facebook.com/"+ user.get('fb_id') +"/picture?width=96&height=96"
+			},
+			name: {
+				text: user.get('first_name') + ' ' + user.get('last_name')
+			},
+			donations: {
+				text: user.get('donations')
+			},
+			message: {
+				text: user.get('message')
+			},
+			
+			properties: {
+				itemId: user.get('fb_id')
+			},
+			template: 'facebook'
+		};
+		return data;
 	};
-	return data;
+	if( users.map ){
+		var dataArray = [];
+		var dataItem;
+		for(var i = 0; i < users.length; i++){
+			dataItem = _setData(users.at(i));
+			if( i < TOP_LEVEL_COUNT){
+				dataItem.properties.height = 150;
+			}
+			dataArray.push( dataItem );
+		}
+		return dataArray;
+	}else{
+		return _setData(users);
+	}
 };
 var addRows = function(options){
 	var addedUsers = options.addedUsers;
 	var reset = options.reset;
-	var dataArray = [];
-	
-	if( addedUsers.map ){
-		for(var i = 0; i < addedUsers.length; i++){
-			dataArray.push( _settingData( addedUsers.at(i) ) );
-		}
-	}else{
-		dataArray.push( _settingData( addedUsers ) );
-	}
+	// var dataArray = [];
+// 	
+	// if( addedUsers.map ){
+		// for(var i = 0; i < addedUsers.length; i++){
+			// dataArray.push( _settingData( addedUsers.at(i) ) );
+		// }
+	// }else{
+		// dataArray.push( _settingData( addedUsers ) );
+	// }
 	
 	if( reset ){
 		// listView.deleteSectionAt(0);
-		section.setItems(dataArray, {'animated': true});
+		section.setItems(_settingData(addedUsers), {'animated': true});
 	}else{
-		section.appendItems(dataArray, {'animated': true});
+		section.appendItems(_settingData(addedUsers) , {'animated': true});
 	}
 
 	if (listView.getSectionCount() === 0) {
