@@ -92,6 +92,7 @@ var addRows = function(options){
 	listView.scrollToItem(0, 0);
 };
 
+/*
 users.on('add', function(model, collection, options){
 	addRows({ 
 		'addedUsers': model,
@@ -105,12 +106,13 @@ users.on('change', function(changedUser){
 });
 users.on('sort', function(collection, options){ // when the collection has been re-sorted.
 	alert('sort');
-	var dataArray = [];
-	_.each(collection, function(user){
-		dataArray.push( _settingData( user ) );
-	});
-	section.setItems(dataArray);
+	// var dataArray = [];
+	// _.each(collection, function(user){
+		// dataArray.push( _settingData( user ) );
+	// });
+	// section.setItems(dataArray);
 });
+*/
 
 $.listView.addEventListener('itemclick', function(e){
     // var item = e.section.getItemAt(e.itemIndex);
@@ -132,13 +134,13 @@ $.listView.addEventListener('itemclick', function(e){
 });
 
 // users.fetchFromServer();
-
 var button = Ti.UI.createButton({
-   title: 'refresh',
-   top: 300,
-   width: 100,
-   height: 50
-});
+	title : 'refresh',
+	top : 300,
+	width : 100,
+	height : 50
+}); 
+
 button.addEventListener('click', function(e){
 	users.fetchFromServer({
 		success: function(){

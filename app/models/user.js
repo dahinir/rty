@@ -153,7 +153,7 @@ exports.definition = {
 					per_page : 100,
 				    // 'limit': 999, // 1000 is maxium
 				    // 'order': 'custom_fields.donations',
-				    'order': '-donations',
+				    order: '-donations',
 					where : {
 						// "external_accounts.external_id" : query.id,
 						// age : {
@@ -191,6 +191,8 @@ exports.definition = {
 							fb_ids.push( userJSON.external_accounts[0].external_id );
 						});
 						thisCollection.sort();
+						/** there is no sort event in backbone 0.9.2 **/
+						thisCollection.trigger('sort');
 						
 						// fb_ids = ["1463107549", "100006520249939", "100005482740868"];
 						Facebook.requestWithGraphPath('', {
