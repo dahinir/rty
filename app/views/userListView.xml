@@ -29,6 +29,7 @@
 					<View id="relationshipIndicator" bindId="relationshipIndicator" />
 					<ImageView id="profileImage" bindId="profileImage" />
 					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
+					<Label id="ranking" bindId="ranking" />
 					<Label id="name" bindId="name" />
 					<Label id="screenName" bindId="screenName" />
 					<Label id="donations" bindId="donations" />
