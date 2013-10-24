@@ -11,6 +11,7 @@ users.comparator = function(user){
 	return -user.get('donations');
 };
 
+/*
 var doTransform = function (model) {
 	var o = model.toJSON();
 	if (o.subtitle) {
@@ -29,6 +30,7 @@ var doTransform = function (model) {
 
 	return o;
 };
+*/
 
 var _getIndexByItemId = function(itemId){
 	var index;
@@ -44,7 +46,7 @@ var _getIndexByItemId = function(itemId){
 	return index;
 };
 var _settingData = function(users){
-	var _setData = function(user){
+	var _set = function(user){
 		var data = {
 			profileImage: {
 				image: "https://graph.facebook.com/"+ user.get('fb_id') +"/picture?width=96&height=96"
@@ -67,36 +69,26 @@ var _settingData = function(users){
 			},
 			template: 'facebook'
 		};
+		
+		if( user.get('ranking') <= TOP_LEVEL_COUNT ){
+			data.properties.height = 150;
+		}
 		return data;
 	};
 	if( users.map ){
 		var dataArray = [];
-		var dataItem;
-		for(var i = 0; i < users.length; i++){
-			dataItem = _setData(users.at(i));
-			if( i < TOP_LEVEL_COUNT){
-				dataItem.properties.height = 150;
-			}
-			dataArray.push( dataItem );
-		}
+		users.each(function(user){
+			dataArray.push(_set(user));
+		});
 		return dataArray;
 	}else{
-		return _setData(users);
+		return _set(users);
 	}
 };
 var addRows = function(options){
 	var addedUsers = options.addedUsers;
 	var reset = options.reset;
-	// var dataArray = [];
-// 	
-	// if( addedUsers.map ){
-		// for(var i = 0; i < addedUsers.length; i++){
-			// dataArray.push( _settingData( addedUsers.at(i) ) );
-		// }
-	// }else{
-		// dataArray.push( _settingData( addedUsers ) );
-	// }
-	
+
 	if( reset ){
 		// listView.deleteSectionAt(0);
 		section.setItems(_settingData(addedUsers), {'animated': true});
@@ -120,13 +112,21 @@ users.on('add', function(model, collection, options){
 		'reset': false 
 	});
 });
-*/
 users.on('sort', function(collection, options){ // when the collection has been re-sorted.
-	for(var i = 0; i < users.length; i++){
-		users.at(0).set({'ranking': i+1});
+	alert('sort');
+	// var dataArray = [];
+	// _.each(collection, function(user){
+		// dataArray.push( _settingData( user ) );
+	// });
+	// section.setItems(dataArray);
+});
+*/
+users.on('sort', function(){
+	for(var i=0; i < users.length; i++){
+		users.at(i).set({'ranking': i+1});
 	}
 });
-users.on('change', function(changedUser){
+users.on('change:first_name change:last_name donation message', function(changedUser){
 	var index = _getIndexByItemId(changedUser.get('fb_id'));
 	var data = _settingData( changedUser );
 	section.updateItemAt(index, data, {'animated': true});
