@@ -1,15 +1,30 @@
 <Alloy>
 	<NavigationWindow id="mainNavWindow" platform="ios">
 		<Window id="mainWindow" >
-			<View id="navBarView" >
-				<Button id="accountButton" class="leftNavButton" >acnt</Button>
+			<LeftNavButton>
+				<Button id="accountButton" class="leftNavButton">acnt</Button>
+			</LeftNavButton>
+			<RightNavButton>
+				<Button id="donateButton" class="rightNavButton">donation</Button>
+			</RightNavButton>
+			<!-- <TitleControl>
+				<View id="navBarView" >
+					<Button id="accountButton" class="leftNavButton">acnt</Button>
+					<View id="titleView">
+						<ImageView id="titleImageView" />
+						<Label id="titleLabel" />
+					</View>
+					<Button id="donateButton" class="rightNavButton">donation</Button>
+				</View>
+			</TitleControl> -->
+			<!-- <View id="navBarView" >
+				<Button id="accountButton" class="leftNavButton">acnt</Button>
 				<View id="titleView">
 					<ImageView id="titleImageView" />
 					<Label id="titleLabel" />
 				</View>
 				<Button id="donateButton" class="rightNavButton">donation</Button>
-				<!-- <Require id="newTweetButton" src="newTweetButton" class="rightNavButton" /> -->
-			</View>
+			</View> -->
 			<Require id="userListView" src="userListView" />
 		</Window>
 	</NavigationWindow>

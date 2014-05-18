@@ -2,8 +2,7 @@
 	// modal: true,
 	// layout: "vertical",
 	backButtonTitle : "",
-	navBarHidden: false,
-	backgroundColor: "white"
+	navBarHidden: false
 },
 // override app.tss
 "#titleLabel":{

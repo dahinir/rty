@@ -6,6 +6,7 @@ var softKeyboardHeight = 0;
 
 // $.titleImageView.setImage( ownerAccount.get('profile_image_url_https') );
 $.titleLabel.setText( L('leave-a-msg') );
+
 // $.remainCountToBurn.setText( YOTOO_CONVERSATION_LIMIT );
 $.donationTextField.setHintText( L('1.00') );
 

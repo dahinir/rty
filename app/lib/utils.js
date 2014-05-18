@@ -24,9 +24,9 @@ exports.openController = _.throttle(function(navGroup,name,args){
 		w.open();
 	}else{
 		if(navGroup.apiName === "Ti.UI.iOS.NavigationWindow"){
-			navGroup.openWindow(w, {animated:true});				
+			navGroup.openWindow(w, {animated: true});				
 		}else{
-			navGroup.open(w, {animated:true});
+			navGroup.open(w, {animated: true});
 		}
 	}
 }, 2000);

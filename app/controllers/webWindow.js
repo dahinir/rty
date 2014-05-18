@@ -3,6 +3,7 @@ var args = arguments[0] || {};
 // $.titleLabel.setText( L('web') );
 if(args.url){
 	$.webView.setUrl(args.url);
+	$.webWindow.setTitle(args.url);
 }
 // exports.addEventListener = function(a, b ){
 	// $.webView.addEventListener(a, b);

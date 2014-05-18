@@ -1,5 +1,8 @@
 <Alloy>
 	<Window id="webWindow" >
+		<RightNavButton>
+			<Button id="shareButton" class="rightNavButton">share</Button>
+		</RightNavButton>
 		<!-- <View id="navBarView" >
 			<Button id="closeButton" class="leftNavButton" />
 			<View id="titleView">
