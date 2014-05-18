@@ -7,6 +7,8 @@
 // pixel == dp * ( density / 160 ) 
 
 "Window": {
+	tintColor: 'red',
+	navTintColor: 'yellow',
 	navBarHidden: true,
 	backgroundColor: "#DDD"
 	// backgroundImage:'images/back.png',

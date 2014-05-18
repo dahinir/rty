@@ -141,13 +141,22 @@ $.listView.addEventListener('itemclick', function(e){
         // item.properties.accessoryType = Ti.UI.LIST_ACCESSORY_TYPE_NONE;
     // }
     // e.section.updateItemAt(e.itemIndex, item);  
-    alert(
+    Ti.API.info(
         "ItemId: " + e.itemId + "\n" +
         "BindId: " + e.bindId + "\n" +
         "Section Index: " + e.sectionIndex + ", Item Index: " + e.itemIndex
     );   
     if( e.bindId === "profileImage" ){
-		Ti.Platform.openURL("fb://profile/" + e.itemId);
+		if(Ti.Platform.canOpenURL("fb://profile/" + e.itemId)){
+			alert("can");
+		// Ti.Platform.openURL("fb://profile/" + e.itemId);
+		}else{
+			AG.utils.openController(
+				AG.mainNavWindow,
+				'webWindow',
+				{url:'http://facebook.com/'+e.itemId}
+			);	
+		}
     }
 });
 

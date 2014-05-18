@@ -38,5 +38,6 @@ $.donateButton.addEventListener('click', function() {
 	Alloy.createController('composeMessageWindow').getView().open();
 });
 
-$.mainWindow.open();
+AG.mainNavWindow = $.mainNavWindow;
+$.mainNavWindow.open();
 

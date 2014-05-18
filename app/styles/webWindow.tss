@@ -1,0 +1,17 @@
+"#webWindow": {
+	// modal: true,
+	// layout: "vertical",
+	backButtonTitle : "",
+	navBarHidden: false,
+	backgroundColor: "white"
+},
+// override app.tss
+"#titleLabel":{
+	right: 5
+},
+"#webView[platform=ios]": {
+	disableBounce: false	// default false
+}
+
+
+

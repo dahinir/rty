@@ -12,11 +12,13 @@
 
 // global variables
 // var _ = require('alloy/underscore')._;
+var AG = Alloy.Globals;
+AG.utils = require('utils');
+
 var Facebook = require('facebook');
 var Cloud = require('ti.cloud');
 
 Cloud.sessionId = Ti.App.Properties.getString('acsSessionId');
-
 
 if (OS_IOS) {
 	var Storekit = require('ti.storekit');
@@ -32,7 +34,7 @@ if (OS_IOS) {
 			case Storekit.FAILED:
 				alert("Storekit.FAILED " + evt.message);
 				if (evt.cancelled) {
-					alert('Purchase cancelled');
+					alert('Purchase cancelled ');
 				} else {
 					alert('ERROR: Buying failed! ' + evt.message);
 				}
