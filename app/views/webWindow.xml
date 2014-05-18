@@ -2,7 +2,7 @@
 	<Window id="webWindow" >
 		<RightNavButton>
 			<!-- <Button id="shareButton" class="rightNavButton">share</Button> -->
-			<Button systemButton="ACTION"/>
+			<Button systemButton="ACTION"  platform="ios" />
 		</RightNavButton>
 		<!-- <View id="navBarView" >
 			<Button id="closeButton" class="leftNavButton" />

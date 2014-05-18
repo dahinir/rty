@@ -1,12 +1,13 @@
-<!-- not ios -->
+<!-- only iOS!! -->
 
 <Alloy>
+	<NavigationWindow id="mainNavWindow">
 		<Window id="mainWindow" >
 			<LeftNavButton>
 				<Button id="accountButton" class="leftNavButton">acnt</Button>
 			</LeftNavButton>
 			<RightNavButton>
-				<Button id="donateButton" class="rightNavButton">donation</Button>
+				<Button id="donateButton" class="rightNavButton" systemButton="COMPOSE"/>
 			</RightNavButton>
 			<!-- <TitleControl>
 				<View id="navBarView" >
@@ -28,4 +29,5 @@
 			</View> -->
 			<Require id="userListView" src="userListView" />
 		</Window>
+	</NavigationWindow>
 </Alloy>

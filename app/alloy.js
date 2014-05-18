@@ -15,6 +15,10 @@
 var AG = Alloy.Globals;
 AG.utils = require('utils');
 
+
+// 처음 로컬에서 fetch하고 순위 300위 이하 유저는 삭제 .
+
+
 var Facebook = require('facebook');
 var Cloud = require('ti.cloud');
 
