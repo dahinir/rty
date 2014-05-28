@@ -148,10 +148,11 @@ $.listView.addEventListener('itemclick', function(e){
         "BindId: " + e.bindId + "\n" +
         "Section Index: " + e.sectionIndex + ", Item Index: " + e.itemIndex
     );
+    
     if( e.bindId === "profileImage" ){
 		if(Ti.Platform.canOpenURL("fb://profile/" + e.itemId)){
 			// alert("can");
-		// Ti.Platform.openURL("fb://profile/" + e.itemId);
+			Ti.Platform.openURL("fb://profile/" + e.itemId);
 		}else{
 			AG.utils.openController(
 				AG.mainNavWindow,
@@ -161,9 +162,12 @@ $.listView.addEventListener('itemclick', function(e){
 		}
     }else{
     	var selectedDataItem = section.getItemAt( e.itemIndex );
-    	selectedDataItem.properties.height=200;
-    	Ti.API.info(section.getItemAt( e.itemIndex ));
-    	section.updateItemAt( e.itemIndex, selectedDataItem );
+    	// selectedDataItem.properties.height=200;
+    	selectedDataItem.template = "selected";
+    	Ti.API.info(selectedDataItem);
+   
+		section.updateItemAt(e.itemIndex, selectedDataItem); 
+
     }
 });
 

@@ -5,6 +5,10 @@
 "ItemTemplate[platform=ios]":{
 	selectionStyle: Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
 },
+".selectedTemplate": {
+	height: 200,
+	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL,
+}
 ".completed":{
 	borderWidth : 5,
 	borderRadius : 3,
