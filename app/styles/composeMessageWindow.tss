@@ -1,12 +1,13 @@
 "#composeMessageWindow": {
 	// layout: "vertical",
 	modal: true
+	// title: L('leave-a-msg'),
+	// navBarHidden: false,
 	// height: 200,
 	// width: 200
 	// fullscreen: false
 	// bubbleParent : true,
 	// translucent : true,
-	// backgroundColor: "transparent"
 },
 "#donationTextField": {
 	top: 80,

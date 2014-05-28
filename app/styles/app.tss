@@ -7,7 +7,18 @@
 // pixel == dp * ( density / 160 ) 
 
 "Window": {
-	navBarHidden: true,
+	tintColor: 'red',
+	navTintColor: 'yellow',
+	navBarHidden: false,
+	titleAttributes:{
+		color: '#FFF',
+		shadowColor: "#111", // IOS only
+		font: {
+			fontFamily:'Cooper Blk BT',
+			// fontWeight: 'bold',
+			fontSize: 19
+		}
+	},
 	backgroundColor: "#DDD"
 	// backgroundImage:'images/back.png',
 	// softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''

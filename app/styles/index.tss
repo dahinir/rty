@@ -1,4 +1,5 @@
 "#mainWindow": {
+	title: L("rank"),
 	exitOnClose: true
 }
 

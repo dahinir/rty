@@ -1,5 +1,12 @@
 <Alloy>
 	<Window id="composeMessageWindow" >
+		<!-- navigation Window가 메인이라 옆으로 열리는 윈도 아니면 디폴트 navBar가 없다.  
+		<LeftNavButton>
+			<Button id="closeButton" class="leftNavButton" >close</Button>
+		</LeftNavButton>
+		<RightNavButton>
+			<Button id="sendButton" class="rightNavButton" >send</Button>
+		</RightNavButton> -->
 		<View id="navBarView" >
 			<Button id="closeButton" class="leftNavButton" >close</Button>
 			<View id="titleView">
@@ -8,7 +15,6 @@
 			</View>
 			<Button id="sendButton" class="rightNavButton" >send</Button>
 		</View>
-
 
 
         <Picker id="picker" selectionIndicator="true" useSpinner="true">

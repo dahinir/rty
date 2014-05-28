@@ -48,7 +48,7 @@
 					/>
 			</ListSection>
 			-->
-			<ListSection id="section" />
+			<ListSection id="section" ></ListSection>
 
 		</ListView>
 	</View>
