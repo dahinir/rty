@@ -4,7 +4,7 @@ var users = Alloy.createCollection('user');
 var section = $.section;
 var listView = $.listView;
 
-var TOP_LEVEL_COUNT = 2;
+var TOP_LEVEL_COUNT = 1;
 
 /* sort this users by order of donations */ 
 users.comparator = function(user){
@@ -132,6 +132,8 @@ users.on('change:first_name change:last_name donation message', function(changed
 	section.updateItemAt(index, data, {'animated': true});
 });
 
+var clickedMode = function(){
+};
 $.listView.addEventListener('itemclick', function(e){
     // var item = e.section.getItemAt(e.itemIndex);
     // if (item.properties.accessoryType == Ti.UI.LIST_ACCESSORY_TYPE_NONE) {
@@ -145,10 +147,10 @@ $.listView.addEventListener('itemclick', function(e){
         "ItemId: " + e.itemId + "\n" +
         "BindId: " + e.bindId + "\n" +
         "Section Index: " + e.sectionIndex + ", Item Index: " + e.itemIndex
-    );   
+    );
     if( e.bindId === "profileImage" ){
 		if(Ti.Platform.canOpenURL("fb://profile/" + e.itemId)){
-			alert("can");
+			// alert("can");
 		// Ti.Platform.openURL("fb://profile/" + e.itemId);
 		}else{
 			AG.utils.openController(
@@ -157,6 +159,11 @@ $.listView.addEventListener('itemclick', function(e){
 				{url:'http://facebook.com/'+e.itemId}
 			);	
 		}
+    }else{
+    	var selectedDataItem = section.getItemAt( e.itemIndex );
+    	selectedDataItem.properties.height=200;
+    	Ti.API.info(section.getItemAt( e.itemIndex ));
+    	section.updateItemAt( e.itemIndex, selectedDataItem );
     }
 });
 
