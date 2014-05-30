@@ -13,7 +13,7 @@
 	// accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL,
 }
 ".name_selected": {
-	color: "red"
+	color: "green"
 }
 "#buttonsView": {
 	height: 40,
