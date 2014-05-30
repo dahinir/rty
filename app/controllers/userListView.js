@@ -132,8 +132,7 @@ users.on('change:first_name change:last_name donation message', function(changed
 	section.updateItemAt(index, data, {'animated': true});
 });
 
-var clickedMode = function(){
-};
+var prevSelectedRow;
 $.listView.addEventListener('itemclick', function(e){
     // var item = e.section.getItemAt(e.itemIndex);
     // if (item.properties.accessoryType == Ti.UI.LIST_ACCESSORY_TYPE_NONE) {
@@ -161,15 +160,36 @@ $.listView.addEventListener('itemclick', function(e){
 			);	
 		}
     }else{
-    	var selectedDataItem = section.getItemAt( e.itemIndex );
-    	// selectedDataItem.properties.height=200;
-    	selectedDataItem.template = "selected";
-    	Ti.API.info(selectedDataItem);
-   
-		section.updateItemAt(e.itemIndex, selectedDataItem); 
+    	if(prevSelectedRow){
+    		// Ti.API.info(prevSelectedRow);
+    		section.updateItemAt(prevSelectedRow.index, _.extend(prevSelectedRow.dataItem,{
+    			template: prevSelectedRow.template
+    		}));
+    		if( prevSelectedRow.index == e.itemIndex){
+	    		prevSelectedRow = undefined;
+	    		return;
+    		}
+    	}
+    	var dataItem = section.getItemAt( e.itemIndex );
+    	
+    	prevSelectedRow = {
+    		index: e.itemIndex,
+    		template: dataItem.template,
+    		dataItem: dataItem
+    	};
+    	var selectedRow = {
+    		index: e.itemIndex,
+    		template: dataItem.template,
+    		dataItem: dataItem
+    	};
+    	// Ti.API.info(selectedRow);
 
+		section.updateItemAt(e.itemIndex, _.extend(selectedRow.dataItem, {
+			template : "selected"
+		}));
     }
 });
+
 
 // users.fetchFromServer();
 var button = Ti.UI.createButton({
