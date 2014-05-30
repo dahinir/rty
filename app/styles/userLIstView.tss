@@ -5,10 +5,23 @@
 "ItemTemplate[platform=ios]":{
 	selectionStyle: Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
 },
+
+/* selected template */
 ".selectedTemplate": {
-	height: 200,
-	accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL,
+	height: 125,
+	backgroundColor: Alloy.Globals.COLORS.darkGray
+	// accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL,
 }
+".name_selected": {
+	color: "red"
+}
+"#buttonsView": {
+	height: 40,
+	bottom: 0,
+	backgroundColor: Alloy.Globals.COLORS.duff
+}
+/* selected template */
+
 ".completed":{
 	borderWidth : 5,
 	borderRadius : 3,
@@ -51,7 +64,8 @@
 	top: 6,
 	left: 0
 },
-"#name": {
+".name": {
+	// color: "red",
 	color : '#070707',
 	font : {
 		fontFamily : 'Arial',
@@ -103,6 +117,8 @@
 	top : 34,
 	left : 55	
 },
+
+
 "#message": {
 	color: '#333',
 	top: 40,

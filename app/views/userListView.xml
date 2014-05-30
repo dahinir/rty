@@ -30,7 +30,7 @@
 					<ImageView id="profileImage" bindId="profileImage" />
 					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
 					<Label id="ranking" bindId="ranking" />
-					<Label id="name" bindId="name" />
+					<Label class="name" bindId="name" />
 					<Label id="screenName" bindId="screenName" />
 					<Label id="donations" bindId="donations" />
 					<Label id="message" bindId="message" />
@@ -41,11 +41,12 @@
 					<ImageView id="profileImage" bindId="profileImage" />
 					<ImageView id="verifiedAccountIcon" bindId="verifiedAccountIcon" />
 					<Label id="ranking" bindId="ranking" />
-					<Label id="name" bindId="name" />
+					<Label class="name name_selected" bindId="name" />
 					<Label id="screenName" bindId="screenName" />
 					<Label id="donations" bindId="donations" />
 					<Label id="message" bindId="message" />
 					<Label id="description" bindId="description_" /> <!-- 'description' is keyword -->
+					<View id="buttonsView" bindId="buttonsView"></View>
 				</ItemTemplate>
 			</Templates>
 			

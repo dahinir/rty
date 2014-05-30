@@ -4,7 +4,7 @@ var users = Alloy.createCollection('user');
 var section = $.section;
 var listView = $.listView;
 
-var TOP_LEVEL_COUNT = 1;
+var TOP_LEVEL_COUNT = 0;
 
 /* sort this users by order of donations */ 
 users.comparator = function(user){
@@ -147,6 +147,11 @@ $.listView.addEventListener('itemclick', function(e){
         "BindId: " + e.bindId + "\n" +
         "Section Index: " + e.sectionIndex + ", Item Index: " + e.itemIndex
     );
+    var animateProp = {
+    	animated : true,
+    	animationStyle : Ti.UI.iPhone.RowAnimationStyle.FADE,
+    	position : Ti.UI.iPhone.ListViewScrollPosition.TOP
+    };
     
     if( e.bindId === "profileImage" ){
 		if(Ti.Platform.canOpenURL("fb://profile/" + e.itemId)){
@@ -162,9 +167,10 @@ $.listView.addEventListener('itemclick', function(e){
     }else{
     	if(selectedRow){
     		// Ti.API.info(prevSelectedRow);
-    		section.updateItemAt(selectedRow.index, _.extend(selectedRow.dataItem, {
-    			template: selectedRow.template
-    		}));
+			section.updateItemAt(selectedRow.index, _.extend(selectedRow.dataItem, {
+				template : selectedRow.template
+			}), animateProp); 
+
     		
     		// 선택된 row를 다시 선택한 경우 
     		if( selectedRow.index == e.itemIndex){
@@ -179,11 +185,11 @@ $.listView.addEventListener('itemclick', function(e){
     		template: dataItem.template,
     		dataItem: dataItem
     	};
-    	// Ti.API.info(selectedRow);
+    	Ti.API.info(selectedRow);
 
 		section.updateItemAt(e.itemIndex, _.extend(selectedRow.dataItem, {
 			template : "selected"
-		}));
+		}), animateProp);
     }
 });
 
