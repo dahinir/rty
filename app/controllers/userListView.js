@@ -162,9 +162,11 @@ $.listView.addEventListener('itemclick', function(e){
     }else{
     	if(selectedRow){
     		// Ti.API.info(prevSelectedRow);
-    		section.updateItemAt(selectedRow.index, _.extend(selectedRow.dataItem,{
+    		section.updateItemAt(selectedRow.index, _.extend(selectedRow.dataItem, {
     			template: selectedRow.template
     		}));
+    		
+    		// 선택된 row를 다시 선택한 경우 
     		if( selectedRow.index == e.itemIndex){
 	    		selectedRow = undefined;
 	    		return;
