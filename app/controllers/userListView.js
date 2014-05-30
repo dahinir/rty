@@ -4,7 +4,7 @@ var users = Alloy.createCollection('user');
 var section = $.section;
 var listView = $.listView;
 
-var TOP_LEVEL_COUNT = 1;
+var TOP_LEVEL_COUNT = 0;
 
 /* sort this users by order of donations */ 
 users.comparator = function(user){
@@ -132,8 +132,7 @@ users.on('change:first_name change:last_name donation message', function(changed
 	section.updateItemAt(index, data, {'animated': true});
 });
 
-var clickedMode = function(){
-};
+var selectedRow;
 $.listView.addEventListener('itemclick', function(e){
     // var item = e.section.getItemAt(e.itemIndex);
     // if (item.properties.accessoryType == Ti.UI.LIST_ACCESSORY_TYPE_NONE) {
@@ -148,10 +147,16 @@ $.listView.addEventListener('itemclick', function(e){
         "BindId: " + e.bindId + "\n" +
         "Section Index: " + e.sectionIndex + ", Item Index: " + e.itemIndex
     );
+    var animateProp = {
+    	animated : true,
+    	animationStyle : Ti.UI.iPhone.RowAnimationStyle.FADE,
+    	position : Ti.UI.iPhone.ListViewScrollPosition.TOP
+    };
+    
     if( e.bindId === "profileImage" ){
 		if(Ti.Platform.canOpenURL("fb://profile/" + e.itemId)){
 			// alert("can");
-		// Ti.Platform.openURL("fb://profile/" + e.itemId);
+			Ti.Platform.openURL("fb://profile/" + e.itemId);
 		}else{
 			AG.utils.openController(
 				AG.mainNavWindow,
@@ -160,12 +165,34 @@ $.listView.addEventListener('itemclick', function(e){
 			);	
 		}
     }else{
-    	var selectedDataItem = section.getItemAt( e.itemIndex );
-    	selectedDataItem.properties.height=200;
-    	Ti.API.info(section.getItemAt( e.itemIndex ));
-    	section.updateItemAt( e.itemIndex, selectedDataItem );
+    	if(selectedRow){
+    		// Ti.API.info(prevSelectedRow);
+			section.updateItemAt(selectedRow.index, _.extend(selectedRow.dataItem, {
+				template : selectedRow.template
+			}), animateProp); 
+
+    		
+    		// 선택된 row를 다시 선택한 경우 
+    		if( selectedRow.index == e.itemIndex){
+	    		selectedRow = undefined;
+	    		return;
+    		}
+    	}
+    	var dataItem = section.getItemAt( e.itemIndex );
+    	
+    	selectedRow = {
+    		index: e.itemIndex,
+    		template: dataItem.template,
+    		dataItem: dataItem
+    	};
+    	Ti.API.info(selectedRow);
+
+		section.updateItemAt(e.itemIndex, _.extend(selectedRow.dataItem, {
+			template : "selected"
+		}), animateProp);
     }
 });
+
 
 // users.fetchFromServer();
 var button = Ti.UI.createButton({

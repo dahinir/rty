@@ -14,6 +14,7 @@
 // var _ = require('alloy/underscore')._;
 var AG = Alloy.Globals;
 AG.utils = require('utils');
+AG.COLORS = require('colors');
 
 
 // 처음 로컬에서 fetch하고 순위 300위 이하 유저는 삭제 .
