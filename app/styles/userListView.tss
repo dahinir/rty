@@ -1,3 +1,8 @@
+"#listView":{
+	separatorInsets: { left:60, right:0}
+	// backgroundColor: "#DDD"
+},
+
 "ItemTemplate":{
 	// backgroundColor: "#D0D0D0",
 	height: 85
@@ -31,9 +36,7 @@
 	// backgroundColor: "#111"
 },
 
-"#listView":{
-	// backgroundColor: "#DDD"
-},
+
 "#relationshipIndicator": {
 	visible: false,
 	top: 0,
@@ -45,7 +48,7 @@
 },
 "#profileImage": {
 	borderWidth : 0.5,
-	borderRadius : 3,
+	borderRadius : 24,
 	borderColor : '#030303',
 	height : 48, // 73/2 is 36.5 but it's too small
 	width : 48,

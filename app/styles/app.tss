@@ -7,11 +7,17 @@
 // pixel == dp * ( density / 160 ) 
 
 "Window": {
-	tintColor: 'red',
-	navTintColor: 'yellow',
-	navBarHidden: false,
+	// navBarHidden: false,
+	backgroundColor: Alloy.Globals.COLORS.whiteGray
+	// backgroundImage:'images/back.png',
+	// softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''
+},
+"Window[platform=ios]": {
+	includeOpaqueBars: true,
+	translucent: true,
+	barColor: "white",
 	titleAttributes:{
-		color: '#FFF',
+		color: Alloy.Globals.COLORS.collardGreen,
 		shadowColor: "#111", // IOS only
 		font: {
 			fontFamily:'Cooper Blk BT',
@@ -19,10 +25,11 @@
 			fontSize: 19
 		}
 	},
-	backgroundColor: "#DDD"
-	// backgroundImage:'images/back.png',
-	// softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''
-},
+	tintColor: Alloy.Globals.COLORS.red,
+	navTintColor: Alloy.Globals.COLORS.red,
+	extendEdges : [Ti.UI.EXTEND_EDGE_TOP, Ti.UI.EXTEND_EDGE_BOTTOM],
+	autoAdjustScrollViewInsets : true
+}
 "Window[platform=android]": {
     softInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE 
 },

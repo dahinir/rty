@@ -222,6 +222,7 @@ var button2 = Ti.UI.createButton({
 });
 
 button2.addEventListener('click', function(e){
+	AG.mainWindow.fireEvent("haha");
 	for(var i=0; i < users.length; i++){
 		Ti.API.info(users.at(i).get('first_name') + users.at(i).get('donations'));
 	}

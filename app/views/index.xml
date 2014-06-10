@@ -1,7 +1,7 @@
 <!-- not ios -->
 
 <Alloy>
-		<Window id="mainWindow" >
+		<Window class="container" >
 			<LeftNavButton>
 				<Button id="accountButton" class="leftNavButton">acnt</Button>
 			</LeftNavButton>

@@ -1,11 +1,17 @@
 var args = arguments[0] || {};
 
+AG.mainWindow = $.mainWindow;
+AG.mainWindow.addEventListener("haha", function(){
+	$.mainWindow.setTitlePrompt(null);
+});
+	$.mainWindow.setTitlePrompt( "d" );
+
 // $.titleLabel.text = L('rank');
 // $.userListView.getView().setTop($.navBarView.getHeight());
 
 $.accountButton.addEventListener('click', function() {
 	// Alloy.createController('accountsWindow').getView().open();
-	// $.mainWindow.add(Alloy.createController('accountWindow').getView());
+	// $.index.add(Alloy.createController('accountWindow').getView());
 
 	var bgView = Titanium.UI.createView({
 		backgroundColor : '#000',
@@ -37,5 +43,6 @@ $.donateButton.addEventListener('click', function() {
 	Alloy.createController('composeMessageWindow').getView().open();
 });
 
-AG.mainNavWindow = $.mainNavWindow;
-$.mainNavWindow.open();
+// AG.mainNavWindow = $.mainNavWindow;
+// $.mainNavWindow.open();
+$.index.open();
