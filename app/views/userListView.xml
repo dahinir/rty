@@ -32,6 +32,7 @@
 					<Label id="ranking" bindId="ranking" />
 					<Label class="name" bindId="name" />
 					<Label id="screenName" bindId="screenName" />
+					<Label id="time" bindId="time" />
 					<Label id="donations" bindId="donations" />
 					<Label id="message" bindId="message" />
 					<Label id="description" bindId="description_" /> <!-- 'description' is keyword -->

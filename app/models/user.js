@@ -32,6 +32,16 @@ exports.definition = {
 			"type": "sql",
 			"collection_name": "user"
 		}
+		// adapter: {
+			// type: "acs",
+			// collection_name: "post",
+			// idAttribute : 'id',
+		// },
+// 		
+		// "settings": {
+	        // "object_name": "posts", 
+	        // "object_method": "Posts"
+	    // }
 	},		
 
 	extendModel: function(Model) {		
@@ -164,6 +174,10 @@ exports.definition = {
 					}
 				}, function(e) {
 					if (e.success) {
+						// Ti.API.info(e.users);
+						// thisCollection.add(e.users);
+						// Ti.API.info(thisCollection.length);
+						// return;
 						var fb_ids = [];
 						/** there is no {merge:true} options in backbone 0.9.2 **/
 						var tempUser;

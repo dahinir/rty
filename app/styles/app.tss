@@ -7,22 +7,31 @@
 // pixel == dp * ( density / 160 ) 
 
 "Window": {
-	tintColor: 'red',
-	navTintColor: 'yellow',
-	navBarHidden: false,
-	titleAttributes:{
-		color: '#FFF',
-		shadowColor: "#111", // IOS only
-		font: {
-			fontFamily:'Cooper Blk BT',
-			// fontWeight: 'bold',
-			fontSize: 19
-		}
-	},
-	backgroundColor: "#DDD"
+	// navBarHidden: false,
+	backgroundColor: Alloy.Globals.COLORS.whiteGray
 	// backgroundImage:'images/back.png',
 	// softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''
 },
+"Window[platform=ios]": {
+	// includeOpaqueBars: true,
+	// translucent: true,
+	barColor: "#0fff",
+	titleAttributes:{
+		color: Alloy.Globals.COLORS.collardGreen,
+		// shadowColor: "#111", // IOS only
+		// verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
+		font: {
+			// fontWeight: 'bold',
+			// fontSize: 50,
+			fontSize: 17,
+			fontFamily:'Cooper Blk BT'
+		}
+	},
+	tintColor: Alloy.Globals.COLORS.purpleSwag,
+	navTintColor: Alloy.Globals.COLORS.purpleSwag,
+	extendEdges : [Ti.UI.EXTEND_EDGE_TOP, Ti.UI.EXTEND_EDGE_BOTTOM],
+	autoAdjustScrollViewInsets : true
+}
 "Window[platform=android]": {
     softInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE 
 },
@@ -49,12 +58,13 @@
 	height: 30
 },
 "Label": {
-	color: '#000000',
+	// height:'auto'
+	color: Alloy.Globals.COLORS.collardGreen,
 	font: {
+		fontFamily: 'HelveticaNeue'
 		// fontFamily: fontFamily,
-		fontSize:12
-	},
-	height:'auto'
+		// fontSize:12
+	}
 },
 "ImageView": {
 	defaultImage : "images/defaultImageView.png"
@@ -86,7 +96,11 @@
 },
 "ActivityIndicator": {
 	color: 'green',
-	font: {fontFamily:'Helvetica Neue', fontSize:26, fontWeight:'bold'},
+	font: {
+		// fontFamily: 'Helvetica Neue',
+		fontSize: 26,
+		fontWeight: 'bold'
+	},
 	message: 'Loading...',
 	// style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
 	top: 10,

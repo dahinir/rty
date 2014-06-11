@@ -45,6 +45,12 @@ exports = {
 	lickyOrange: '#FD4526',	// main point
 	lickyRed: '#FD3D39',	// sub point
 	
+	/*
+	 * for rty
+	 */
+	collardGreen: "#606044",
+	purpleSwag: "#FF0063", 
+
 	// etcs
 	facebookBlue: '#4063A7'
 };
