@@ -1,5 +1,8 @@
 "#listView":{
-	separatorInsets: { left:60, right:0}
+	separatorInsets: {
+		left: 67,
+		right: 0
+	}
 	// backgroundColor: "#DDD"
 },
 
@@ -17,24 +20,12 @@
 	backgroundColor: Alloy.Globals.COLORS.darkGray
 	// accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DETAIL,
 }
-".name_selected": {
-	color: "green"
-}
 "#buttonsView": {
 	height: 40,
 	bottom: 0,
 	backgroundColor: Alloy.Globals.COLORS.duff
 }
 /* selected template */
-
-".completed":{
-	borderWidth : 5,
-	borderRadius : 3,
-	borderColor: "#AFA"
-},
-"#completed":{
-	// backgroundColor: "#111"
-},
 
 
 "#relationshipIndicator": {
@@ -64,20 +55,46 @@
 	left : 5
 },
 "#ranking":{
-	top: 6,
-	left: 0
-},
-".name": {
-	// color: "red",
-	color : '#070707',
 	font : {
-		fontFamily : 'Arial',
-		fontSize : 16,
-		fontWeight : 'bold'
+		fontFamily : 'Gujarati Sangam MN',
+		fontSize : 9
+		// fontWeight : 'bold'
 	},
-	top : 6,
+	top: 8,
+	left: 4
+}
+"#donations": {
+	backgroundColor: "yellow",
+	// width: 62,
+	font : {
+		fontFamily : 'Georgia',
+		fontSize : 12
+		// fontWeight : 'bold'
+	},
+	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER, 
+	// top: 60,
+	center: {x:	33, y: 66}
+}
+".name": {
+	// color : Alloy.Globals.COLORS.collardGreen,
+	font : {
+		fontFamily : 'HelveticaNeue',
+		fontSize : 16
+		// fontWeight : 'bold'
+	},
+	top : 7,
 	left : 67
-},
+}
+"#message": {
+	color: 'black',
+	top: 28,
+	left: 67,
+	font : {
+		fontFamily : 'HelveticaNeue-UltraLight',
+		fontSize : 16
+		// fontWeight : 'bold'
+	},
+}
 "#screenName":{
 	color : '#445044',
 	font : {
@@ -107,7 +124,7 @@
 "#description_": {
 	color : '#444',
 	font : {
-		fontFamily : 'Arial',
+		// fontFamily : 'Arial',
 		fontSize : 12,
 		fontStyle : 'italic', // only iOS
 		fontWeight : 'normal'
@@ -119,28 +136,6 @@
 	height : Ti.UI.SIZE,
 	top : 34,
 	left : 55	
-},
-
-
-"#message": {
-	color: '#333',
-	top: 40,
-	left: 55
-},
-"#rightActionButton": {
-	width : 90,
-	height : 30,
-	right : 10,
-	zIndex: 10,
-	title: 'action'	
-},
-"#blackoutScreen": {
-	zIndex: 1,
-	visible: true,
-	top: 0,
-	left: 0,
-	backgroundColor: "#000",
-	opacity: 0.5
 }
 
 

@@ -3,6 +3,7 @@
 <Alloy>
 	<NavigationWindow class="container">
 		<Window id="mainWindow" >
+			
 			<LeftNavButton>
 				<Button id="accountButton" class="leftNavButton">acnt</Button>
 			</LeftNavButton>

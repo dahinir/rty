@@ -2,9 +2,24 @@ var args = arguments[0] || {};
 
 AG.mainWindow = $.mainWindow;
 AG.mainWindow.addEventListener("haha", function(){
-	$.mainWindow.setTitlePrompt(null);
+	// $.mainWindow.setTitlePrompt(null);
+	if( $.mainWindow.getTitlePrompt() ){
+		$.mainWindow.setTitlePrompt( null );
+		
+		$.mainWindow.setTitle("Rank");
+		$.mainWindow.setTitleControl(null);
+	}else{
+		$.mainWindow.setTitlePrompt( "Rank" );
+		
+		var toolbar2 = Ti.UI.createView({
+			backgroundColor: "yellow",
+			width: 64,
+			height:10
+		});
+		$.mainWindow.setTitleControl(toolbar2);
+	}
 });
-	$.mainWindow.setTitlePrompt( "d" );
+ 
 
 // $.titleLabel.text = L('rank');
 // $.userListView.getView().setTop($.navBarView.getHeight());

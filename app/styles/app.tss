@@ -13,20 +13,22 @@
 	// softInputMode:(Ti.UI.Android) ? Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE : ''
 },
 "Window[platform=ios]": {
-	includeOpaqueBars: true,
-	translucent: true,
-	barColor: "white",
+	// includeOpaqueBars: true,
+	// translucent: true,
+	barColor: "#0fff",
 	titleAttributes:{
 		color: Alloy.Globals.COLORS.collardGreen,
-		shadowColor: "#111", // IOS only
+		// shadowColor: "#111", // IOS only
+		// verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_BOTTOM,
 		font: {
-			fontFamily:'Cooper Blk BT',
 			// fontWeight: 'bold',
-			fontSize: 19
+			// fontSize: 50,
+			fontSize: 17,
+			fontFamily:'Cooper Blk BT'
 		}
 	},
-	tintColor: Alloy.Globals.COLORS.red,
-	navTintColor: Alloy.Globals.COLORS.red,
+	tintColor: Alloy.Globals.COLORS.purpleSwag,
+	navTintColor: Alloy.Globals.COLORS.purpleSwag,
 	extendEdges : [Ti.UI.EXTEND_EDGE_TOP, Ti.UI.EXTEND_EDGE_BOTTOM],
 	autoAdjustScrollViewInsets : true
 }
@@ -56,12 +58,13 @@
 	height: 30
 },
 "Label": {
-	color: '#000000',
+	// height:'auto'
+	color: Alloy.Globals.COLORS.collardGreen,
 	font: {
+		fontFamily: 'HelveticaNeue'
 		// fontFamily: fontFamily,
-		fontSize:12
-	},
-	height:'auto'
+		// fontSize:12
+	}
 },
 "ImageView": {
 	defaultImage : "images/defaultImageView.png"
@@ -93,7 +96,11 @@
 },
 "ActivityIndicator": {
 	color: 'green',
-	font: {fontFamily:'Helvetica Neue', fontSize:26, fontWeight:'bold'},
+	font: {
+		// fontFamily: 'Helvetica Neue',
+		fontSize: 26,
+		fontWeight: 'bold'
+	},
 	message: 'Loading...',
 	// style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
 	top: 10,

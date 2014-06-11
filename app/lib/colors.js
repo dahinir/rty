@@ -48,8 +48,9 @@ exports = {
 	/*
 	 * for rty
 	 */
-	 collardGreen: "#84847F",
-	
+	collardGreen: "#606044",
+	purpleSwag: "#FF0063", 
+
 	// etcs
 	facebookBlue: '#4063A7'
 };

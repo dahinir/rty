@@ -55,7 +55,7 @@ var _settingData = function(users){
 				text: user.get('first_name') + ' ' + user.get('last_name')
 			},
 			donations: {
-				text: user.get('donations')
+				text: "$" + user.get('donations')
 			},
 			message: {
 				text: user.get('message')
@@ -202,6 +202,14 @@ var button = Ti.UI.createButton({
 	height : 50
 }); 
 
+users.fetchFromServer({
+	success: function(){
+		addRows({
+			'addedUsers': users,
+			'reset': true
+		});
+	}
+});
 button.addEventListener('click', function(e){
 	users.fetchFromServer({
 		success: function(){
