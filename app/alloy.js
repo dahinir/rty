@@ -15,7 +15,8 @@
 var AG = Alloy.Globals;
 AG.utils = require('utils');
 AG.COLORS = require('colors');
-
+AG.moment = require('momentExtend');
+moment.lang(AG.currentLanguage);
 
 // 처음 로컬에서 fetch하고 순위 300위 이하 유저는 삭제 .
 

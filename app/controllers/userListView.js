@@ -47,6 +47,7 @@ var _getIndexByItemId = function(itemId){
 };
 var _settingData = function(users){
 	var _set = function(user){
+		Ti.API.info( user.attributes );
 		var data = {
 			profileImage: {
 				image: "https://graph.facebook.com/"+ user.get('fb_id') +"/picture?width=96&height=96"
@@ -62,6 +63,10 @@ var _settingData = function(users){
 			},
 			ranking: {
 				text: user.get('ranking')
+			},
+			time : {
+				// text : AG.moment(user.get('created_at')).twitter()
+				text : user.get('created_at')
 			},
 			
 			properties: {
